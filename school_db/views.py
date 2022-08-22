@@ -294,7 +294,11 @@ def problem_six(request):
 
     # Make sure to set this equal to the primary key of the row you just created!
     student_id = 11
-
+    Student.objects.filter(pk=11).update(gpa=3.5)
+    student = Student.objects.get(pk=11)
+    print(
+        f'Id: {student.id}\nFull Name: {student.first_name} {student.last_name}\nGPA: {student.gpa}'
+    )
     return complete(request)
 
 
@@ -341,6 +345,8 @@ def problem_seven(request):
 
     # Make sure to set this equal to the primary key of the row you just created!
     student_id = 11
+
+    Student.objects.filter(pk=student_id).delete()
 
     try:
         student = Student.objects.get(pk=student_id)
@@ -397,7 +403,17 @@ SELECT `school_db_student`.`id`,
 # Find all of the instructors that only belong to a single course
 # Print out the instructors full name and number of courses to the console
 def bonus_problem(request):
+    instructor_one = Instructor.objects.filter(pk=3).get()
+    instructor_two = Instructor.objects.filter(pk=6).get()
+    print(
+      f'Instructor Name: {instructor_one.first_name} {instructor_one.last_name}\NInstructor Name: {instructor_two.first_name} {instructor_two.last_name}'
+    )
+    # instructors = Instructor.objects.get(pk=2)
+    courses = Course.objects.filter
+    for course in courses:
+      print()
 
+    print(f'{courses}')
     return complete(request)
 
 
